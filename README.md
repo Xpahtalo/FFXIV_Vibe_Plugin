@@ -16,7 +16,7 @@ This fork is intended to remove the premium features, make the source code publi
 From Kaciexx's ko-fi (https://ko-fi.com/ffxivvibeplugin) :
 
 <p align="center">
-  <img width="200" height="200" src="./images/ko-fi announcement.png" />
+  <img src="./images/ko-fi announcement.png" />
 </p>
 
 ## Features
