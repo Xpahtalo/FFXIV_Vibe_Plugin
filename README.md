@@ -13,7 +13,7 @@ A plugin for FFXIV that will let you vibe your controller or toys.
 I am not the original dev behind this project. Unfortunately, Kaciexx, the creator of FFXIV Vibe Plugin, is no longer.
 This fork is intended to remove the premium features, make the source code public, and keep the plugin working for ApiX/DT.
 
-From Kaciexx's ko-fi (https://ko-fi.com/ffxivvibeplugin) :
+From [Kaciexx's ko-fi](https://ko-fi.com/ffxivvibeplugin):
 
 <p align="center">
   <img src="./images/ko-fi announcement.png" />
