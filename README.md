@@ -53,7 +53,7 @@ From [Kaciexx's ko-fi](https://ko-fi.com/ffxivvibeplugin):
 
 ## Installation
 1. Launch your game, open `/xlplugins`, go to the settings (bottom left) and in the `Experimental` tab.
-2. Under `Custom Plugin Repositories` add the following url `https://raw.githubusercontent.com/kaciexx/FFXIV_Vibe_Plugin/master/repo.json` and press the <kbd>+</kbd> icon.
+2. Under `Custom Plugin Repositories` add the following url `https://raw.githubusercontent.com/Aspher0/FFXIV_Vibe_Plugin/master/repo.json` and press the <kbd>+</kbd> icon.
 3. Press the `Save and close` button on the bottom left.
 
 Now you should be able to see `FFXIV Vibe Plugin`. Click install and enjoy.
