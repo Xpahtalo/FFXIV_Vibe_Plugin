@@ -1,13 +1,23 @@
 # FFXIV Vibe Plugin
 
-<img src="https://img.shields.io/discord/914941648859963503"/> <img src="https://img.shields.io/github/last-commit/kaciexx/FFXIV_Vibe_Plugin" />
-<a href="https://patreon.com/kaciexx"><img src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Dkaciexx%26type%3Dpatrons&style=flat" alt="Support me on Patreon" /></a>
+<img src="https://img.shields.io/discord/914941648859963503"/> <img src="https://img.shields.io/github/last-commit/Aspher0/FFXIV_Vibe_Plugin" />
 
 <p align="center">
   <img width="200" height="200" src="./images/icon.png" />
 </p>
 
 A plugin for FFXIV that will let you vibe your controller or toys.
+
+## Disclaimer
+
+I am not the original dev behind this project. Unfortunately, Kaciexx, the creator of FFXIV Vibe Plugin, is no longer.
+This fork is intended to remove the premium features, make the source code public, and keep the plugin working for ApiX/DT.
+
+From Kaciexx's ko-fi (https://ko-fi.com/ffxivvibeplugin) :
+
+<p align="center">
+  <img width="200" height="200" src="./images/ko-fi announcement.png" />
+</p>
 
 ## Features
 - Easy UI interface.
@@ -34,24 +44,12 @@ A plugin for FFXIV that will let you vibe your controller or toys.
 - Priority system (lower priority number will be stopped).
 - Triggers can be activated only if in or out of combat.
 
-\* Limited to 10 free triggers in the free version.
-
-## Premium features
-- The number of triggers are unlimited.
-- Create multiple profiles.
-- Export/Import triggers.
-
 ## Tutorials
 - [How to install and set your first trigger](https://www.youtube.com/watch?v=YYFzVQsC_kc)
-
-## How to obtain your premium token ?
-You need to register on [Patreon](https://www.patreon.com/kaciexx). Once registered you will receive your token (~15min) by email.
-Then you will need to copy/paste the token in the first tab of the plugin.
 
 ## Prerequisites
 - [FFXIV QuickLauncher](https://github.com/goatcorp/FFXIVQuickLauncher).
 - [Intiface Central](https://intiface.com/central/) **NOT Intiface Desktop**
-
 
 ## Installation
 1. Launch your game, open `/xlplugins`, go to the settings (bottom left) and in the `Experimental` tab.
@@ -199,15 +197,10 @@ Wine Configuration box. This should fix your network and/or crash issue.
 [Terms of service](./TERMS.md)
 
 # Discord
-- [This plugin discord](https://discord.gg/JnCGxa3gGa)
+- [This plugin's old discord](https://discord.gg/JnCGxa3gGa)
 - [Ms. Tress #discussion](https://discord.gg/fx5pABsE)
 
-# Donation & Donors
-Donation link:
-- [https://paypal.me/kaciedev](https://paypal.me/kaciedev)
-- [https://www.patreon.com/kaciexx](https://www.patreon.com/kaciexx)
-
-Please concider doing a small donation if you like this plugin. We worked a lot, gave a lots of free nights to design it, listening to everything people wanted and doing the implementation.
+# Donors
 
 Thanks to:
 - Hooper (36$)
