@@ -57,31 +57,6 @@ namespace FFXIV_Vibe_Plugin.UI
                 configuration.Save();
             }
             ImGui.EndChild();
-            ImGui.Spacing();
-            ImGui.TextColored(ImGuiColors.DalamudViolet, "Premium settings");
-            ImGui.BeginChild("###Premium", new Vector2(-1f, 60f), true);
-            ImGui.Text("Premium token");
-            ImGui.SameLine();
-            string premiumToken = configurationProfile.PREMIUM_TOKEN;
-            ImGui.SetNextItemWidth(200f);
-            if (ImGui.InputText("##premium_token", ref premiumToken, 200U) && premiumToken != configurationProfile.PREMIUM_TOKEN_SECRET)
-            {
-                configurationProfile.PREMIUM_TOKEN = premiumToken == "" ? "" : "********";
-                configurationProfile.PREMIUM_TOKEN_SECRET = premiumToken;
-                configuration.Save();
-                premium.updateStatus();
-            }
-            ImGui.SameLine();
-            if (!premium.invalidToken)
-                ImGui.TextColored(ImGuiColors.HealerGreen, "VALID TOKEN");
-            else if (premiumToken == "")
-                ImGui.TextColored(ImGuiColors.DalamudGrey2, "Please enter your Premium token");
-            else
-                ImGui.TextColored(ImGuiColors.DPSRed, "Invalid token. " + premium.serverMsg);
-            ImGui.SameLine();
-            ImGuiComponents.HelpMarker("Copy/Paste your personal token. Don't share your configuration file since it will be present in there. Abuse and multiple connections with the same token will result on a permanent ban.");
-            ImGui.TextColored(ImGuiColors.DalamudGrey, "Subscribe on patreon to get your token (link at the top). Token can not be used on multiple machines at the same time.");
-            ImGui.EndChild();
         }
     }
 }

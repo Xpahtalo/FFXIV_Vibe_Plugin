@@ -35,25 +35,6 @@ namespace FFXIV_Vibe_Plugin.UI
             }
             else
                 ImGui.TextColored(ImGuiColors.ParsedGrey, "Your are not connected!");
-            if (premium.IsPremium())
-            {
-                ImGui.Text("Premium subscription: " + premium.GetPremiumLevel());
-            }
-            else
-            {
-                if (frameCounter < 200)
-                    ImGui.Text("Donations: ");
-                else
-                    ImGui.Text("                     ");
-                ImGui.SameLine();
-                ImGui.Text(donationLink ?? "");
-                ImGui.SameLine();
-                ButtonLink.Draw("Thanks for the donation ;)", donationLink, (FontAwesomeIcon)63107, logger);
-                ImGui.SameLine();
-                ImGui.Text(KofiLink ?? "");
-                ImGui.SameLine();
-                ButtonLink.Draw("Thanks for the subscription ;)", KofiLink, (FontAwesomeIcon)63402, logger);
-            }
         }
     }
 }
