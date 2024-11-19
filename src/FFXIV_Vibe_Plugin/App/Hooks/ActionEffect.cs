@@ -4,8 +4,8 @@ using Dalamud.Hooking;
 using Dalamud.Plugin.Services;
 using FFXIV_Vibe_Plugin.Commons;
 using Lumina.Excel;
-using Lumina.Excel.GeneratedSheets;
 using Lumina.Text;
+using Lumina.Text.ReadOnly;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -21,7 +21,7 @@ namespace FFXIV_Vibe_Plugin.Hooks
         private readonly IClientState ClientState;
         private readonly IObjectTable GameObjects;
         private readonly IGameInteropProvider InteropProvider;
-        private readonly ExcelSheet<Lumina.Excel.GeneratedSheets.Action>? LuminaActionSheet;
+        private readonly ExcelSheet<Lumina.Excel.Sheets.Action>? LuminaActionSheet;
         private Hook<ActionEffect.HOOK_ReceiveActionEffectDelegate> receiveActionEffectHook;
 
         public event EventHandler<HookActionEffects_ReceivedEventArgs>? ReceivedEvent;
@@ -43,7 +43,7 @@ namespace FFXIV_Vibe_Plugin.Hooks
             this.InitHook();
             if (this.DataManager == null)
                 return;
-            this.LuminaActionSheet = this.DataManager.GetExcelSheet<Lumina.Excel.GeneratedSheets.Action>();
+            this.LuminaActionSheet = this.DataManager.GetExcelSheet<Lumina.Excel.Sheets.Action>();
         }
 
         public void Dispose()
@@ -201,30 +201,35 @@ namespace FFXIV_Vibe_Plugin.Hooks
                 this.Logger.Warn("HookActionEffect.GetSpellName: LuminaActionSheet is null");
                 return "***LUMINA ACTION SHEET NOT LOADED***";
             }
-            Lumina.Excel.GeneratedSheets.Action row = this.LuminaActionSheet.GetRow(actionId); // A VERIFIER
-            string spellName = "";
-            if (row != null)
+
+            try
             {
+                Lumina.Excel.Sheets.Action row = this.LuminaActionSheet.GetRow(actionId);
+                string spellName = "";
+
                 DefaultInterpolatedStringHandler interpolatedStringHandler;
                 if (withId)
                 {
                     interpolatedStringHandler = new DefaultInterpolatedStringHandler(1, 1);
-                    interpolatedStringHandler.AppendFormatted<uint>(((ExcelRow)row).RowId);
+                    interpolatedStringHandler.AppendFormatted<uint>(row.RowId);
                     interpolatedStringHandler.AppendLiteral(":");
                     spellName = interpolatedStringHandler.ToStringAndClear();
                 }
-                if (row.Name != null)
+                if (!row.Name.IsEmpty)
                 {
                     string str = spellName;
                     interpolatedStringHandler = new DefaultInterpolatedStringHandler(0, 1);
-                    interpolatedStringHandler.AppendFormatted<SeString>(row.Name);
+                    interpolatedStringHandler.AppendFormatted<ReadOnlySeString>(row.Name);
                     string stringAndClear = interpolatedStringHandler.ToStringAndClear();
                     spellName = str + stringAndClear;
                 }
+
+                return spellName;
             }
-            else
-                spellName = "!Unknown Spell Name!";
-            return spellName;
+            catch (ArgumentOutOfRangeException)
+            {
+                return "!Unknown Spell Name!";
+            }
         }
 
         private string GetCharacterNameFromSourceId(int sourceId)

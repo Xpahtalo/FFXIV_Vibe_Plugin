@@ -72,7 +72,7 @@ namespace FFXIV_Vibe_Plugin
           TriggersController triggersController,
           Patterns Patterns,
           Premium premium)
-          : base("FFXIV_Vibe_Plugin_UI", (ImGuiWindowFlags)56, false)
+          : base("FFXIV Vibe Plugin", (ImGuiWindowFlags)56, false)
         {
             ImGui.SetNextWindowPos(new Vector2(100f, 100f), (ImGuiCond)8);
             ImGui.SetNextWindowSize(new Vector2((float)this.WIDTH, (float)this.HEIGHT), (ImGuiCond)8);
