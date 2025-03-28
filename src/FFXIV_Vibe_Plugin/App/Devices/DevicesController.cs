@@ -1,5 +1,4 @@
 using Buttplug.Client;
-using Buttplug.Client.Connectors.WebsocketConnector;
 using FFXIV_Vibe_Plugin.App;
 using FFXIV_Vibe_Plugin.Commons;
 using FFXIV_Vibe_Plugin.Triggers;

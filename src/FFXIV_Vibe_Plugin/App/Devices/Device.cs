@@ -295,17 +295,18 @@ namespace FFXIV_Vibe_Plugin.Device
                     for (int index = 0; index < nbrMotors; ++index)
                         this.CurrentRotateIntensity[index] = intensity;
                 }
-                List<(double, bool)> motorIntensity = new List<(double, bool)>();
+
+                var motorIntensity = new List<RotateCmd.RotateCommand>();
                 for (int index = 0; index < nbrMotors; ++index)
                 {
                     double num = (double)Helpers.ClampIntensity(this.CurrentRotateIntensity[index], threshold) / 100.0;
-                    motorIntensity.Add((num, clockWise));
+                    motorIntensity.Add(new RotateCmd.RotateCommand(num, clockWise));
                 }
                 this.RotateDebouncer.Debounce((Action)(() =>
                 {
                     for (int index = 0; index < nbrMotors; ++index)
                         this.Logger.Warn(index.ToString() + " MotorIntensity: " + motorIntensity[index].ToString());
-                    this.ButtplugClientDevice.RotateAsync((IEnumerable<(double, bool)>)motorIntensity);
+                    this.ButtplugClientDevice.RotateAsync(motorIntensity);
                 }));
             }
             catch (Exception ex)
@@ -365,17 +366,18 @@ namespace FFXIV_Vibe_Plugin.Device
                     for (int index = 0; index < nbrMotors; ++index)
                         this.CurrentLinearIntensity[index] = intensity;
                 }
-                List<(uint, double)> motorIntensity = new List<(uint, double)>();
+                // List<(uint, double)> motorIntensity = new List<(uint, double)>();
+                var motorIntensity = new List<LinearCmd.VectorCommand>();
                 for (int index = 0; index < nbrMotors; ++index)
                 {
-                    double num = (double)Helpers.ClampIntensity(this.CurrentLinearIntensity[index], threshold) / 100.0;
-                    motorIntensity.Add(((uint)index, num));
+                    var num = Helpers.ClampIntensity(this.CurrentLinearIntensity[index], threshold) / 100.0;
+                    motorIntensity.Add(new LinearCmd.VectorCommand(num, (uint)duration));
                 }
                 this.LinearDebouncer.Debounce((Action)(() =>
                 {
                     for (int index = 0; index < nbrMotors; ++index)
                         this.Logger.Warn(index.ToString() + " MotorIntensity: " + motorIntensity[index].ToString());
-                    this.ButtplugClientDevice.LinearAsync((IEnumerable<(uint, double)>)motorIntensity);
+                    this.ButtplugClientDevice.LinearAsync(motorIntensity);
                 }));
             }
             catch (Exception ex)
